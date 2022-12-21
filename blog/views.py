@@ -1,11 +1,13 @@
-from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Post
 # Create your views here.
 
 class PostList(ListView):
     model = Post
     ordering = '-pk'
+
+class PostDetail(DetailView):
+    model = Post
 # def index(request):
 #     posts = Post.objects.all().order_by('-pk')
 #
@@ -22,7 +24,7 @@ def single_pages(request, pk):
 
     return render(
         request,
-        'blog/single_pages.html',
+        'blog/post_detail.html',
         {
             'post': post,
         }
